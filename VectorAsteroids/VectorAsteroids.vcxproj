@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A4A2D618-FBD1-426B-972E-A356E0DA562F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>VectorAsteroids</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Data\User\Documents\Visual Studio 2013\C++\;C:\Data\User\Documents\Visual Studio 2013\C++\vmath-0.10\include;C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\include;C:\Data\User\Documents\Visual Studio 2013\C++\SDL2-2.0.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\lib\x86;C:\Data\User\Documents\Visual Studio 2013\C++\SDL2-2.0.1\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Data\User\Documents\Visual Studio 2013\C++\;C:\Data\User\Documents\Visual Studio 2013\C++\vmath-0.10\include;C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\include;C:\Data\User\Documents\Visual Studio 2013\C++\SDL2-2.0.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\lib\x86;C:\Data\User\Documents\Visual Studio 2013\C++\SDL2-2.0.1\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>
+      </SDLCheck>
+      <AdditionalIncludeDirectories>C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\include;C:\Data\User\Documents\Visual Studio 2013\C++\boost;..\..\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy “C:\Data\User\Documents\Visual Studio 2013\C++\SDL2-2.0.1\lib\x86\SDL2.dll” “$(OutDir)SDL2.dll”
+copy "C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\lib\x86\SDL2_mixer.dll" "$(OutDir)SDL2_mixer.dll"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\include;C:\Data\User\Documents\Visual Studio 2013\C++\boost;..\..\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>msvcrtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy “C:\Data\User\Documents\Visual Studio 2013\C++\SDL2-2.0.1\lib\x86\SDL2.dll” “$(OutDir)SDL2.dll”</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Common.cpp" />
+    <ClCompile Include="Dot.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Explosion.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="LargeRock.cpp" />
+    <ClCompile Include="LargeUFO.cpp" />
+    <ClCompile Include="MediumRock.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerShot.cpp" />
+    <ClCompile Include="Rock.cpp" />
+    <ClCompile Include="RockController.cpp" />
+    <ClCompile Include="Shot.cpp" />
+    <ClCompile Include="SmallRock.cpp" />
+    <ClCompile Include="SmallUFO.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="UFO.cpp" />
+    <ClCompile Include="UFOController.cpp" />
+    <ClCompile Include="UFOShot.cpp" />
+    <ClCompile Include="VectorAsteroids.cpp" />
+    <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="Dot.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Explosion.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="HUD.h" />
+    <ClInclude Include="LargeRock.h" />
+    <ClInclude Include="LargeUFO.h" />
+    <ClInclude Include="MediumRock.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerShot.h" />
+    <ClInclude Include="Rock.h" />
+    <ClInclude Include="RockController.h" />
+    <ClInclude Include="Shot.h" />
+    <ClInclude Include="SmallRock.h" />
+    <ClInclude Include="SmallUFO.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="UFO.h" />
+    <ClInclude Include="UFOController.h" />
+    <ClInclude Include="UFOShot.h" />
+    <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
