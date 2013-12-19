@@ -112,6 +112,8 @@ copy "C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\lib\x86\SDL
     <ClCompile Include="LargeUFO.cpp" />
     <ClCompile Include="MediumRock.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerExplosionLine.cpp" />
+    <ClCompile Include="PlayerShip.cpp" />
     <ClCompile Include="PlayerShot.cpp" />
     <ClCompile Include="Rock.cpp" />
     <ClCompile Include="RockController.cpp" />
@@ -137,6 +139,8 @@ copy "C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\lib\x86\SDL
     <ClInclude Include="LargeUFO.h" />
     <ClInclude Include="MediumRock.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerExplosionLine.h" />
+    <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="PlayerShot.h" />
     <ClInclude Include="Rock.h" />
     <ClInclude Include="RockController.h" />
