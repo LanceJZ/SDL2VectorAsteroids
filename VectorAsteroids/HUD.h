@@ -4,6 +4,7 @@
 #include <fstream>
 #include "Window.h"
 #include "Timer.h"
+#include "PlayerShip.h"
 
 struct NumberData
 {
@@ -61,11 +62,8 @@ private:
 	bool m_FirePressed;
 
 	// Player Ship
-	Vector2i m_Front;
-	Vector2i m_RSide;
-	Vector2i m_LSide;
-	Vector2i m_LInSide;
-	Vector2i m_RInSide;
+	PlayerShip *pShip;
+	Color ShipColor;
 
 	//New number lines
 	NumberData Numbers[10];
@@ -79,7 +77,6 @@ private:
 	void ProcessNumber(int number, Vector2i locationStart, int size);
 	void DrawNumber(Vector2i location, int number, int size);
 	void DrawLetter(Vector2i location, int letter, int size);
-	void DrawPlayerShip(Vector2i location);
 
 	std::string IntToString(int number);
 

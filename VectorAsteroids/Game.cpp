@@ -16,7 +16,7 @@ int Game::OnInit()
 
 	try
 	{
-		Window::Init(screenWidth, screenHeight, "Vector Asteroids in SDL2 Alpha 03.80");
+		Window::Init(screenWidth, screenHeight, "Vector Asteroids in SDL2 Alpha 03.81");
 	}
 	catch (const std::runtime_error &error)
 	{

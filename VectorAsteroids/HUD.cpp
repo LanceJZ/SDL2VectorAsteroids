@@ -133,7 +133,11 @@ void HUD::Draw(void)
 
 	for (int ship = 0; ship < m_PlayerHitsLeft; ship++)
 	{
-		DrawPlayerShip(Vector2i(10 + ship * 10, 30));
+		float scale = 1;
+		float rotation = 4.7123889803846898576939650749193;
+		Vector2f location = Vector2f(10 + ship * 10, 30);
+		pShip->Update(&rotation, &location, &scale);
+		pShip->Draw(&ShipColor);
 	}
 
 	// Draw Game Over text
@@ -353,7 +357,7 @@ void HUD::NewGame(void)
 	m_HighscoreUpdated = false;
 }
 
-HUD::HUD(void)
+HUD::HUD()
 {
 	m_GameText[0] = "GAME OVER";
 	m_GameText[1] = "N KEY TO START OR RESTART GAME";
@@ -387,11 +391,11 @@ HUD::HUD(void)
 	InitializeLetterLine();
 
 	//Player Ship
-	m_Front = Vector2i(4, 0);
-	m_RSide = Vector2i(8, 12);
-	m_LSide = Vector2i(0, 12);
-	m_LInSide = Vector2i(1, 10);
-	m_RInSide = Vector2i(7, 10);
+	pShip = new PlayerShip();
+	ShipColor.Red = 165;
+	ShipColor.Green = 165;
+	ShipColor.Blue = 255;
+	ShipColor.Alpha = 255;
 
 	p_Bonus = Mix_LoadWAV("Bonus.wav");
 
@@ -436,13 +440,6 @@ std::string HUD::IntToString(int number)
 	std::stringstream tostream;
 	tostream << number;
 	return tostream.str();
-}
-
-void HUD::DrawPlayerShip(Vector2i location)
-{
-	Window::DrawLine(m_Front + location, m_RSide + location, 165, 165, 255, 255);
-	Window::DrawLine(m_Front + location, m_LSide + location, 165, 165, 255, 255);
-	Window::DrawLine(m_LInSide + location, m_RInSide + location, 165, 165, 255, 255);
 }
 
 void HUD::DrawNumber(Vector2i location, int number, int size)

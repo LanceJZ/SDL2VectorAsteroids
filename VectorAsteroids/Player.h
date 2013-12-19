@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "PlayerShot.h"
 #include "Timer.h"
+#include "PlayerShip.h"
 
 class Player : public Entity
 {
@@ -16,6 +17,7 @@ private:
 	int m_ShipWidth;
 	int m_ShipHeight;
 	int m_NumberOfShots;
+	float m_Scale;
 	float m_MaxThrust;
 	float m_ThrustMagnitude;
 	float m_TurnRate;
@@ -23,23 +25,6 @@ private:
 	double m_ThrustDrawTimerAmount;
 	double m_ExplosionTimer;
 	double m_ExplosiontTimerAmount;
-	Vector2i m_Front;
-	Vector2i m_RSide;
-	Vector2i m_LSide;
-	Vector2i m_LInSide;
-	Vector2i m_RInSide;
-	Vector2i m_LFlame;
-	Vector2i m_RFlame;
-	Vector2i m_FlameTip;
-	Vector2f m_ExLFront;
-	Vector2f m_ExRFront;
-	Vector2f m_ExRSide;
-	Vector2f m_ExLSide;
-	Vector2f m_ExLInside;
-	Vector2f m_ExRInside;
-	Vector2f m_ExMoveA;
-	Vector2f m_ExMoveB;
-	Vector2f m_ExMoveC;
 
 	Mix_Chunk *p_Shotsound = nullptr;
 	Mix_Chunk *p_Thrustsound = nullptr;
@@ -49,16 +34,16 @@ private:
 
 	Timer *pTimer;
 	PlayerShot *pShots[4];
+	PlayerShip *pShip;
+	Color ShipColor;
 
-	void UpdateShip(double *Frame);
-	void UpdateExplosion(double *Frame);
+	void UpdateShip(void);
 	void UpdateShots(double *Frame);
-	void DoRotationThrust(void);
+	void UpdateRotationThrust(void);
 	void InitializeShot(boost::random::mt19937 &generator);
 	void DrawShots(void);
-	void FireShot(void);
 	void DrawThrust(void);
-	void DrawExplosion(void);
+	void FireShot(void);
 	void SetExplosion(void);
 
 public:
