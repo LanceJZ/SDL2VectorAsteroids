@@ -11,6 +11,7 @@
 #include <memory>
 #include <vmath.h>
 #include <time.h>
+#include "Common.h"
 
 class Window 
 {

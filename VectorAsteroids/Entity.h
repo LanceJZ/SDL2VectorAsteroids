@@ -1,8 +1,6 @@
 #ifndef ENTITY_H
 #define ENTITY_H
-#include <vmath.h>
 #include "Window.h"
-#include "Common.h"
 
 class Entity : public Common
 {
