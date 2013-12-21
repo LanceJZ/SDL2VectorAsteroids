@@ -10,8 +10,7 @@ void PlayerShip::Draw(Color *color)
 	//Set each point as an array then you can use a for/next to draw the three lines.
 	for (int line = 0; line < 3; line++)
 	{
-		Window::DrawLine(NewPlayerLines[line].LineStart, NewPlayerLines[line].LineEnd,
-			color->Red, color->Green, color->Blue, color->Alpha);
+		Window::DrawLine(&NewPlayerLines[line], color);
 	}
 }
 
@@ -19,7 +18,7 @@ void PlayerShip::DrawThrust(void)
 {
 	for (int line = 0; line < 2; line++)
 	{
-		Window::DrawLine(NewThrustLines[line].LineStart, NewThrustLines[line].LineEnd, 150, 0, 230, 55);
+		Window::DrawLine(&NewThrustLines[line], &m_ThrustColor);
 	}
 }
 
@@ -39,11 +38,11 @@ void PlayerShip::DrawExplosion(void)
 	}
 }
 
-void PlayerShip::SetExplosion(Vector2i location)
+void PlayerShip::SetExplosion(Vector2i *Location)
 {
 	for (int line = 0; line < 3; line++)
 	{
-		pExplosionLines[line]->Initialize(NewPlayerLines[line], location);
+		pExplosionLines[line]->Initialize(&NewPlayerLines[line], Location);
 	}
 }
 
@@ -57,6 +56,10 @@ void PlayerShip::InitializeLines(boost::random::mt19937 &generator)
 
 PlayerShip::PlayerShip()
 {
+	m_ThrustColor.Red = 150;
+	m_ThrustColor.Green = 0;
+	m_ThrustColor.Blue = 230;
+	m_ThrustColor.Alpha = 255;
 	Initialize();
 }
 
@@ -82,10 +85,10 @@ void PlayerShip::Initialize(void)
 	ThrustLines[1].LineEnd = Vector2i(-6, 2);
 }
 
-void PlayerShip::MoveRotateLines(float *rotation, Vector2f *location, float *Scale)
+void PlayerShip::MoveRotateLines(float *Rotation, Vector2f *Location, float *Scale)
 {
-	float sinRot = sin(*rotation);
-	float cosRot = cos(*rotation);
+	float sinRot = sin(*Rotation);
+	float cosRot = cos(*Rotation);
 	float scale = *Scale;
 
 	for (int line = 0; line < 3; line++)
@@ -96,8 +99,8 @@ void PlayerShip::MoveRotateLines(float *rotation, Vector2f *location, float *Sca
 		NewPlayerLines[line].LineEnd.x = PlayerLines[line].LineEnd.x * scale * cosRot - PlayerLines[line].LineEnd.y  * scale * sinRot;
 		NewPlayerLines[line].LineEnd.y = PlayerLines[line].LineEnd.x * scale * sinRot + PlayerLines[line].LineEnd.y * scale * cosRot;
 
-		NewPlayerLines[line].LineStart += *location;
-		NewPlayerLines[line].LineEnd += *location;
+		NewPlayerLines[line].LineStart += *Location;
+		NewPlayerLines[line].LineEnd += *Location;
 	}
 
 	for (int line = 0; line < 2; line++)
@@ -108,7 +111,7 @@ void PlayerShip::MoveRotateLines(float *rotation, Vector2f *location, float *Sca
 		NewThrustLines[line].LineEnd.x = ThrustLines[line].LineEnd.x * scale * cosRot - ThrustLines[line].LineEnd.y * scale * sinRot;
 		NewThrustLines[line].LineEnd.y = ThrustLines[line].LineEnd.x * scale * sinRot + ThrustLines[line].LineEnd.y * scale * cosRot;
 
-		NewThrustLines[line].LineStart += *location;
-		NewThrustLines[line].LineEnd += *location;
+		NewThrustLines[line].LineStart += *Location;
+		NewThrustLines[line].LineEnd += *Location;
 	}
 }

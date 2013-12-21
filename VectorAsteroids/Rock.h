@@ -8,6 +8,7 @@ class Rock :
 	public Entity
 {
 private:
+	Color m_Color;
 	Vector2i m_RockPoints[12];
 
 	Explosion *pExplosion;

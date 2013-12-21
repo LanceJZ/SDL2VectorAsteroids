@@ -3,18 +3,13 @@
 #include "Entity.h"
 #include "Window.h"
 
-struct ShipLine
-{
-	Vector2i LineStart;
-	Vector2i LineEnd;
-};
-
 class PlayerExplosionLine :
 	public Entity
 {
 private:
-	ShipLine Line;
-	ShipLine NewLine;
+	Line ShipLine;
+	Line NewLine;
+	Color m_Color;
 
 public:
 	PlayerExplosionLine(boost::random::mt19937 &generator);
@@ -22,7 +17,7 @@ public:
 
 	void Update(double *frame);
 	void Draw(void);
-	void Initialize(ShipLine line, Vector2i location);
+	void Initialize(Line *Line, Vector2i *Location);
 };
 
 #endif

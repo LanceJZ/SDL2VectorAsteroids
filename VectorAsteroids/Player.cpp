@@ -249,9 +249,10 @@ Player::Player(boost::random::mt19937 &generator) : Entity(generator)
 
 	pTimer = new Timer();
 	pShip = new PlayerShip();
-	//90, 0, 255, 255);
-	ShipColor.Red = 95;
-	ShipColor.Green = 0;
+	
+	//Player Ship Color
+	ShipColor.Red = 100;
+	ShipColor.Green = 40;
 	ShipColor.Blue = 255;
 	ShipColor.Alpha = 255;
 
@@ -387,7 +388,7 @@ void Player::UpdateRotationThrust(void)
 
 void Player::SetExplosion(void)
 {
-	pShip->SetExplosion(m_Location);
+	pShip->SetExplosion(&(Vector2i)m_Location);
 	m_ExplosionTimer = pTimer->Seconds() + m_ExplosiontTimerAmount + Random(0, (int)m_ExplosiontTimerAmount);
 }
 

@@ -16,11 +16,17 @@ void Shot::Draw(void)
 {
 	if (m_Active)
 	{		
-		Window::DrawPoint(m_Location, 150, 80, 255, 255);
-		Window::DrawPoint(m_Location + Vector2f(1,0), 180, 000, 185, 180);
-		Window::DrawPoint(m_Location + Vector2f(0, 1), 180, 000, 185, 180);
-		Window::DrawPoint(m_Location + Vector2f(-1, 0), 180, 000, 185, 180);
-		Window::DrawPoint(m_Location + Vector2f(0, -1), 180, 000, 185, 180);
+		Vector2i location;
+
+		Window::DrawPoint(&(Vector2i)m_Location, &m_InsideColor);
+		location = m_Location + Vector2i(1, 0);
+		Window::DrawPoint(&location, &m_OutsideColor);
+		location = m_Location + Vector2i(0, 1);
+		Window::DrawPoint(&location, &m_OutsideColor);
+		location = m_Location + Vector2i(-1, 0);
+		Window::DrawPoint(&location, &m_OutsideColor);
+		location = m_Location + Vector2i(0, -1);
+		Window::DrawPoint(&location, &m_OutsideColor);
 	}
 }
 
@@ -82,6 +88,18 @@ Shot::Shot(boost::random::mt19937 &random) : Entity(random)
 
 	pTimer = new Timer();
 	pTimer->Start();
+
+	//Inside color
+	m_InsideColor.Red = 170;
+	m_InsideColor.Green = 150;
+	m_InsideColor.Blue = 200;
+	m_InsideColor.Alpha = 255;
+
+	//180, 000, 185, 180
+	m_OutsideColor.Red = 200;
+	m_OutsideColor.Green = 50;
+	m_OutsideColor.Blue = 185;
+	m_OutsideColor.Alpha = 180;
 }
 
 Shot::~Shot(void)

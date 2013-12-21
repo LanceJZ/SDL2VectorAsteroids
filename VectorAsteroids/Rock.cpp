@@ -93,6 +93,13 @@ void Rock::UnpauseTimer(void)
 Rock::Rock(boost::random::mt19937 &random, Mix_Chunk *ExplosionSound) : Entity(random)
 {
 	p_ExplosionSound = ExplosionSound;
+
+	//Rock Color.
+	m_Color.Red = 100;
+	m_Color.Green = 50;
+	m_Color.Blue = 255;
+	m_Color.Alpha = 255;
+
 	Initialize(random);
 }
 
@@ -143,12 +150,20 @@ void Rock::BuildRock(void)
 
 void Rock::DrawRock(void)
 {
+	Line rockLine;
+
 	for (int point = 0; point < 11; point++)
 	{
-		Window::DrawLine(m_RockPoints[point] + m_Location, m_RockPoints[point + 1] + m_Location, 100, 0, 255, 255);
+		rockLine.LineStart = m_RockPoints[point] + m_Location;
+		rockLine.LineEnd = m_RockPoints[point + 1] + m_Location;
+
+		Window::DrawLine(&rockLine , &m_Color);
 	}
 
-	Window::DrawLine(m_RockPoints[11] + m_Location, m_RockPoints[0] + m_Location, 100, 0, 255, 255);
+	rockLine.LineStart = m_RockPoints[11] + m_Location;
+	rockLine.LineEnd = m_RockPoints[0] + m_Location;
+
+	Window::DrawLine(&rockLine, &m_Color);
 }
 
 void Rock::Distroyed(void)

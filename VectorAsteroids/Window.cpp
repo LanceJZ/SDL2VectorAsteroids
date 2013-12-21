@@ -160,25 +160,23 @@ SDL_Rect Window::Box()
 	return mBox;
 }
 
-void Window::DrawLine(Vector2i locationStart, Vector2i locationEnd,
-	int colorR, int colorG, int colorB, int colorA)
+void Window::DrawLine(Line *LineLocation, Color *LineColor)
 {	
-	SDL_SetRenderDrawColor(mRenderer.get(), colorR, colorG, colorB, colorA);
-	SDL_RenderDrawLine(mRenderer.get(), locationStart.x, locationStart.y, locationEnd.x, locationEnd.y);
+	SDL_SetRenderDrawColor(mRenderer.get(), LineColor->Red, LineColor->Green, LineColor->Blue, LineColor->Alpha);
+	SDL_RenderDrawLine(mRenderer.get(), LineLocation->LineStart.x, LineLocation->LineStart.y,
+		LineLocation->LineEnd.x, LineLocation->LineEnd.y);
 }
 
-void Window::DrawPoint(Vector2i location,
-	int colorR, int colorG, int colorB, int colorA)
+void Window::DrawPoint(Vector2i *Location, Color *PointColor)
 {
-	SDL_SetRenderDrawColor(mRenderer.get(), colorR, colorG, colorB, colorA);
-	SDL_RenderDrawPoint(mRenderer.get(), location.x, location.y);
+	SDL_SetRenderDrawColor(mRenderer.get(), PointColor->Red, PointColor->Green, PointColor->Blue, PointColor->Alpha);
+	SDL_RenderDrawPoint(mRenderer.get(), Location->x, Location->y);
 }
 
-void Window::DrawRect(const SDL_Rect *rectangleLocation,
-	int colorR, int colorG, int colorB, int colorA)
+void Window::DrawRect(const SDL_Rect *RectangleLocation, Color *RectangleColor)
 {
-	SDL_SetRenderDrawColor(mRenderer.get(), colorR, colorG, colorB, colorA);
-	SDL_RenderDrawRect(mRenderer.get(), rectangleLocation);
+	SDL_SetRenderDrawColor(mRenderer.get(), RectangleColor->Red, RectangleColor->Green, RectangleColor->Blue, RectangleColor->Alpha);
+	SDL_RenderDrawRect(mRenderer.get(), RectangleLocation);
 }
 
 Vector2i Window::GetWindowSize()

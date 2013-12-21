@@ -1,6 +1,5 @@
 #include "HUD.h"
 
-
 void HUD::Update(void)
 {
 	if (m_GameOver)
@@ -390,6 +389,12 @@ HUD::HUD()
 	InitializeNumberLine();
 	InitializeLetterLine();
 
+	//Color of letters and numbers.
+	m_Color.Red = 165;
+	m_Color.Green = 165;
+	m_Color.Blue = 255;
+	m_Color.Alpha = 255;
+
 	//Player Ship
 	pShip = new PlayerShip();
 	ShipColor.Red = 165;
@@ -444,15 +449,18 @@ std::string HUD::IntToString(int number)
 
 void HUD::DrawNumber(Vector2i location, int number, int size)
 {
+	Line NumberLine;
+
 	if (number > -1 && number < 10)
 	{
 		for (int line = 0; line < 7; line++)
 		{
 			if (Numbers[number].Lines[line])
 			{
-				Window::DrawLine(m_NumberLineStart[line] * size + location,
-					m_NumberLineEnd[line] * size + location,
-					165, 165, 255, 255);
+				NumberLine.LineStart = m_NumberLineStart[line] * size + location;
+				NumberLine.LineEnd = m_NumberLineEnd[line] * size + location;
+
+				Window::DrawLine(&NumberLine, &m_Color);
 			}
 		}
 	}
@@ -460,15 +468,18 @@ void HUD::DrawNumber(Vector2i location, int number, int size)
 
 void HUD::DrawLetter(Vector2i location, int letter, int size)
 {
+	Line LetterLine;
+
 	if (letter > -1 && letter < 26)
 	{
 		for (int line = 0; line < 16; line++)
 		{
 			if (Letters[letter].Lines[line])
 			{
-				Window::DrawLine(m_LetterLineStart[line] * size + location,
-					m_LetterLineEnd[line] * size + location,
-					165, 165, 255, 255);
+				LetterLine.LineStart = m_LetterLineStart[line] * size + location;
+				LetterLine.LineEnd = m_LetterLineEnd[line] * size + location;
+
+				Window::DrawLine(&LetterLine, &m_Color);
 			}
 		}
 	}

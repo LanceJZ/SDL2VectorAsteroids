@@ -4,7 +4,7 @@ void Dot::Draw()
 {
 	if (m_Active)
 	{
-		Window::DrawPoint(m_Location, 190, 0, 255, m_Alpha);
+		Window::DrawPoint(&(Vector2i)m_Location, &m_Color);
 	}
 }
 
@@ -17,8 +17,8 @@ void Dot::Update(double *Frame)
 
 		UpdateFrame(Frame);
 
-		if (m_Alpha > 1)
-			m_Alpha -= 1;
+		if (m_Color.Alpha > 1)
+			m_Color.Alpha -= 1;
 	}
 }
 
@@ -33,6 +33,8 @@ void Dot::Activate(Vector2i location, float Angle, int size)
 	int maxV = 50;
 	m_Velocity = Vector2f(cosRot * (float)Random(10, maxV), sinRot * (float)Random(10, maxV));
 	m_Timer = pTimer->Seconds() + (float)Random(m_TimerAmount / 2, m_TimerAmount) * 0.01;
+
+	m_Color.Alpha = 255;
 }
 
 void Dot::Deactivate(void)
@@ -56,6 +58,11 @@ Dot::Dot(boost::random::mt19937 &random) : Entity(random)
 	m_TimerAmount = 100;
 	pTimer = new Timer();
 	pTimer->Start();
+
+	m_Color.Red = 190;
+	m_Color.Green = 0;
+	m_Color.Blue = 255;
+	m_Color.Alpha = 255;
 }
 
 Dot::~Dot(void)

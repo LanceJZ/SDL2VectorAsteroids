@@ -11,6 +11,7 @@ private:
 	int m_TimerAmount;
 	Timer *pTimer;
 	float m_Alpha;
+	Color m_Color;
 
 public:
 	Dot(boost::random::mt19937 &random);

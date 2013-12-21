@@ -4,27 +4,31 @@ void PlayerExplosionLine::Update(double *frame)
 {
 	UpdateFrame(frame);
 
-	NewLine.LineStart = m_Location + Line.LineStart;
-	NewLine.LineEnd = m_Location + Line.LineEnd;
+	NewLine.LineStart = m_Location + ShipLine.LineStart;
+	NewLine.LineEnd = m_Location + ShipLine.LineEnd;
 }
 
 void PlayerExplosionLine::Draw(void)
 {
-	Window::DrawLine(NewLine.LineStart, NewLine.LineEnd, 150, 0, 230, 255);
+	Window::DrawLine(&NewLine, &m_Color);
 }
 
-void PlayerExplosionLine::Initialize(ShipLine line, Vector2i location)
+void PlayerExplosionLine::Initialize(Line *ExpLine, Vector2i *Location)
 {
-	Line = line;
-	Line.LineStart -= location;
-	Line.LineEnd -= location;
-	m_Location = location;
+	ShipLine = *ExpLine;
+	ShipLine.LineStart -= *Location;
+	ShipLine.LineEnd -= *Location;
+	m_Location = *Location;
 	int max = 200;
 	m_Velocity = Vector2f((Random(-max, max) * 0.1) - (Random(-max, max) * 0.1), (Random(-max, max) * 0.1) - (Random(-max, max) * 0.1));
 }
 
 PlayerExplosionLine::PlayerExplosionLine(boost::random::mt19937 &generator) : Entity(generator)
 {
+	m_Color.Red = 150;
+	m_Color.Green = 0;
+	m_Color.Blue = 230;
+	m_Color.Alpha = 255;
 }
 
 

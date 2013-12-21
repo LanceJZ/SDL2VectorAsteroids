@@ -147,21 +147,10 @@ UFO::UFO(boost::random::mt19937 &random, Mix_Chunk *ShotSound, Mix_Chunk *Explos
 	m_TimerChangeVector = 0;
 	m_TimerFireShot = 0;
 
-	m_HLTopLX = 0;
-	m_HLTopRX = 0;
-	m_HLTopY = 0;
-
-	m_HLLowerTopLX = 0;
-	m_HLLowerTopRX = 0;
-	m_HLLowerTopY = 0;
-
-	m_HLUpperBottomLX = 0;
-	m_HLUpperBottomRX = 0;
-	m_HLUpperBottomY = 0;
-
-	m_HLBottomLX = 0;
-	m_HLBottomRX = 0;
-	m_HLBottomY = 0;
+	m_Color.Red = 100;
+	m_Color.Green = 0;
+	m_Color.Blue = 255;
+	m_Color.Alpha = 255;
 
 	for (int shot = 0; shot < m_NumberOfShots; shot++)
 	{
@@ -237,50 +226,70 @@ void UFO::CheckForSide(void)
 
 void UFO::BuildUFO(void)
 {
-	m_HLTopLX = -(m_Width / 7);
-	m_HLTopRX = (m_Width / 7);
-	m_HLTopY = -(m_Width / 5);
+	//m_HLTopLX = -(m_Width / 7);
+	//m_HLTopRX = (m_Width / 7);
+	//m_HLTopY = -(m_Width / 5);
 
-	m_HLLowerTopLX = -(m_Width / 4);
-	m_HLLowerTopRX = (m_Width / 4);
-	m_HLLowerTopY = 0;
+	//m_HLLowerTopLX = -(m_Width / 4);
+	//m_HLLowerTopRX = (m_Width / 4);
+	//m_HLLowerTopY = 0;
 
-	m_HLUpperBottomLX = -(m_Width / 2);
-	m_HLUpperBottomRX = m_Width / 2;
-	m_HLUpperBottomY = m_Width / 6;
+	//m_HLUpperBottomLX = -(m_Width / 2);
+	//m_HLUpperBottomRX = m_Width / 2;
+	//m_HLUpperBottomY = m_Width / 6;
 
-	m_HLBottomLX = -(m_Width / 3);
-	m_HLBottomRX = (m_Width / 3);
-	m_HLBottomY = (m_Width / 3);
+	//m_HLBottomLX = -(m_Width / 3);
+	//m_HLBottomRX = (m_Width / 3);
+	//m_HLBottomY = (m_Width / 3);
+
+	UFOLines[0].LineStart.x = -(m_Width / 7);
+	UFOLines[0].LineStart.y = -(m_Width / 5);
+	UFOLines[0].LineEnd.x = (m_Width / 7);
+	UFOLines[0].LineEnd.y = -(m_Width / 5);
+
+	UFOLines[1].LineStart.x = -(m_Width / 4);
+	UFOLines[1].LineStart.y = 0;
+	UFOLines[1].LineEnd.x = (m_Width / 4);
+	UFOLines[1].LineEnd.y = 0;
+
+	UFOLines[2].LineStart.x = -(m_Width / 2);
+	UFOLines[2].LineStart.y = m_Width / 6;
+	UFOLines[2].LineEnd.x = m_Width / 2;
+	UFOLines[2].LineEnd.y = m_Width / 6;
+
+	UFOLines[3].LineStart.x = -(m_Width / 3);
+	UFOLines[3].LineStart.y = (m_Width / 3);
+	UFOLines[3].LineEnd.x = (m_Width / 3);
+	UFOLines[3].LineEnd.y = (m_Width / 3);
+
+	UFOLines[4].LineStart = UFOLines[0].LineStart;
+	UFOLines[4].LineEnd = UFOLines[1].LineStart;
+
+	UFOLines[5].LineStart = UFOLines[0].LineEnd;
+	UFOLines[5].LineEnd = UFOLines[1].LineEnd;
+
+	UFOLines[6].LineStart = UFOLines[1].LineStart;
+	UFOLines[6].LineEnd = UFOLines[2].LineStart;
+
+	UFOLines[7].LineStart = UFOLines[1].LineEnd;
+	UFOLines[7].LineEnd = UFOLines[2].LineEnd;
+
+	UFOLines[8].LineStart = UFOLines[2].LineStart;
+	UFOLines[8].LineEnd = UFOLines[3].LineStart;
+
+	UFOLines[9].LineStart = UFOLines[2].LineEnd;
+	UFOLines[9].LineEnd = UFOLines[3].LineEnd;
 }
 
 void UFO::DrawUFO(void)
 {	
-	int locationX = m_Location.x;
-	int locationY = m_Location.y;
-	int colorR = 100;
-	int colorB = 255;
-
-	Window::DrawLine(Vector2i(m_HLTopLX + locationX, m_HLTopY + locationY), 
-		Vector2i(m_HLTopRX + locationX, m_HLTopY + locationY), colorR, 0, colorB, 255);
-	Window::DrawLine(Vector2i(m_HLLowerTopLX + locationX, m_HLLowerTopY + locationY), 
-		Vector2i(m_HLLowerTopRX + locationX, m_HLLowerTopY + locationY), colorR, 0, colorB, 255);
-	Window::DrawLine(Vector2i(m_HLUpperBottomLX + locationX, m_HLUpperBottomY + locationY),
-		Vector2i(m_HLUpperBottomRX + locationX, m_HLUpperBottomY + locationY), colorR, 0, colorB, 255);
-	Window::DrawLine(Vector2i(m_HLBottomLX + locationX, m_HLBottomY + locationY), 
-		Vector2i(m_HLBottomRX + locationX, m_HLBottomY + locationY), colorR, 0, colorB, 255);
-	Window::DrawLine(Vector2i(m_HLTopRX + locationX, m_HLTopY + locationY), 
-		Vector2i(m_HLLowerTopRX + locationX, m_HLLowerTopY + locationY), colorR, 0, colorB, 255);
-	Window::DrawLine(Vector2i(m_HLLowerTopRX + locationX, m_HLLowerTopY + locationY), 
-		Vector2i(m_HLUpperBottomRX + locationX, m_HLUpperBottomY + locationY), colorR, 0, colorB, 255);
-	Window::DrawLine(Vector2i(m_HLUpperBottomRX + locationX, m_HLUpperBottomY + locationY), 
-		Vector2i(m_HLBottomRX + locationX, m_HLBottomY + locationY), colorR, 0, colorB, 255);
-	Window::DrawLine(Vector2i(m_HLTopLX + locationX, m_HLTopY + locationY), 
-		Vector2i(m_HLLowerTopLX + locationX, m_HLLowerTopY + locationY), colorR, 0, colorB, 255);
-	Window::DrawLine(Vector2i(m_HLLowerTopLX + locationX, m_HLLowerTopY + locationY), 
-		Vector2i(m_HLUpperBottomLX + locationX, m_HLUpperBottomY + locationY), colorR, 0, colorB, 255);
-	Window::DrawLine(Vector2i(m_HLUpperBottomLX + locationX, m_HLUpperBottomY + locationY), 
-		Vector2i(m_HLBottomLX + locationX, m_HLBottomY + locationY), colorR, 0, colorB, 255);
+	Line NewUFOLine;
+	for (int line = 0; line < 10; line++)
+	{
+		NewUFOLine.LineStart = UFOLines[line].LineStart + m_Location;
+		NewUFOLine.LineEnd = UFOLines[line].LineEnd + m_Location;
+		Window::DrawLine(&NewUFOLine, &m_Color);
+	}
 }
 
 void UFO::TimerPause(void)

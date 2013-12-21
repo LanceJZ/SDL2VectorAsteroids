@@ -10,6 +10,8 @@ class Shot :
 private:
 	float m_ShotTimer;
 	Timer *pTimer;
+	Color m_InsideColor;
+	Color m_OutsideColor;
 
 protected:
 	float m_Angle;

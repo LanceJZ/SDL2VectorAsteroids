@@ -14,6 +14,9 @@ private:
 	Explosion *pExplosion = nullptr;
 	UFOShot *pShots[2];
 
+	Line UFOLines[10];
+	Color m_Color;
+
 	int m_NumberOfShots;
 	float m_TimerChangeVector;
 	bool m_ResetTimer;

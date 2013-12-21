@@ -53,6 +53,7 @@ private:
 	bool m_HighscoreUpdated = false;
 	bool m_NewScore = false;
 	bool m_Done = false;
+	Color m_Color;
 
 	// High Score List Key swtiches
 	bool m_LeftArrowPressed;

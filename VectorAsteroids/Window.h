@@ -13,7 +13,21 @@
 #include <time.h>
 #include "Common.h"
 
-class Window 
+struct Line
+{
+	Vector2i LineStart;
+	Vector2i LineEnd;
+};
+
+struct Color
+{
+	int Red;
+	int Green;
+	int Blue;
+	int Alpha;
+};
+
+class Window
 {
 public:
 	/**
@@ -60,24 +74,21 @@ public:
 	*/
 	//static TTF_Font* LoadFont(const std::string &fontFile, int fontSize);
 	///Clear the renderer
-	static void Clear();
+	static void Clear(void);
 	///Present the renderer, ie. update screen
-	static void Present();
+	static void Present(void);
 	///Get the window's box
-	static SDL_Rect Box();
+	static SDL_Rect Box(void);
 	//Log SDL Error to ostream.
 	static void logSDLError(std::ostream &os, const std::string &msg);
-
-	static void DrawLine(Vector2i locationStart, Vector2i locationEnd,
-		int colorR, int colorG, int colorB, int colorA);
-
-	static void DrawPoint(Vector2i location,
-		int colorR, int colorG, int colorB, int colorA);
-
-	static void DrawRect(const SDL_Rect *rectangleLocation,
-		int colorR, int colorG, int colorB, int colorA);
-
-	static Vector2i GetWindowSize();
+	//Draw Line from one point to another of color.
+	static void DrawLine(Line *LineLocation, Color *LineColor);
+	//Draw a point on the screen of color.
+	static void DrawPoint(Vector2i *PointLocation, Color *PointColor);
+	//Draw a Rectangle on the screen of color.
+	static void DrawRect(const SDL_Rect *RectangleLocation, Color *RectColor);
+	//Return Window Size.
+	static Vector2i GetWindowSize(void);
 
 private:
 	static std::unique_ptr<SDL_Window, void(*)(SDL_Window*)> mWindow;
