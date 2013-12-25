@@ -5,7 +5,7 @@ int LargeRock::PlayerShotRock()
 	return 20;	
 }
 
-LargeRock::LargeRock(boost::random::mt19937 &random, Mix_Chunk *ExplosionSound) : Rock(random, ExplosionSound)
+LargeRock::LargeRock(Mix_Chunk *ExplosionSound) : Rock(ExplosionSound)
 {
 	m_MaxVelocity = 35;
 	m_RockLow = 0;

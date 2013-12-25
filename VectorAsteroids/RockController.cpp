@@ -59,7 +59,7 @@ void RockController::SpawnNewWave(int NumberOfRocks)
 
 		if (spawnnewrock)
 		{
-			m_LargeRocks.push_back(new LargeRock(m_Random, p_ExplosionSound));
+			m_LargeRocks.push_back(new LargeRock(p_ExplosionSound));
 			m_LargeRocks[m_LargeRocks.size() - 1]->Activate(Vector2i(0, GetRandomY()));
 		}
 	}
@@ -83,7 +83,7 @@ void RockController::SpawnMedRocks(Vector2i location)
 
 		if (spawnnewrock)
 		{
-			m_MedRocks.push_back(new MediumRock(m_Random, p_ExplosionSound));
+			m_MedRocks.push_back(new MediumRock(p_ExplosionSound));
 			m_MedRocks[m_MedRocks.size() - 1]->Activate(location);
 		}
 	}
@@ -107,7 +107,7 @@ void RockController::SpawnSmallRocks(Vector2i location)
 
 		if (spawnnewrock)
 		{
-			m_SmallRocks.push_back(new SmallRock(m_Random, p_ExplosionSound));
+			m_SmallRocks.push_back(new SmallRock(p_ExplosionSound));
 			m_SmallRocks[m_SmallRocks.size() - 1]->Activate(location);
 		}
 	}
@@ -137,7 +137,7 @@ void RockController::NewGame(void)
 	SpawnNewWave(m_NumberOfRocks);
 }
 
-RockController::RockController(boost::random::mt19937 &random) : Common(random), m_Random(random)
+RockController::RockController() : Common()
 {
 	p_ExplosionSound = Mix_LoadWAV("RockExplosion.wav");
 	Mix_VolumeChunk(p_ExplosionSound, MIX_MAX_VOLUME / 6);
@@ -155,17 +155,17 @@ void RockController::CreateRocks(void)
 {
 	for (int rock = 0; rock < 8; rock++)
 	{		
-		m_LargeRocks.push_back(new LargeRock(m_Random, p_ExplosionSound));
+		m_LargeRocks.push_back(new LargeRock(p_ExplosionSound));
 	}
 
 	for (int rock = 0; rock < 16; rock++)
 	{		
-		m_MedRocks.push_back(new MediumRock(m_Random, p_ExplosionSound));
+		m_MedRocks.push_back(new MediumRock(p_ExplosionSound));
 	}
 
 	for (int rock = 0; rock < 32; rock++)
 	{		
-		m_SmallRocks.push_back(new SmallRock(m_Random, p_ExplosionSound));
+		m_SmallRocks.push_back(new SmallRock(p_ExplosionSound));
 	}
 }
 

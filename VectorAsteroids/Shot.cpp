@@ -77,7 +77,7 @@ void Shot::TimerUnpause(void)
 	pTimer->Unpause();
 }
 
-Shot::Shot(boost::random::mt19937 &random) : Entity(random)
+Shot::Shot(void) : Entity()
 {
 	m_Active = false;
 	m_Speed = 250;

@@ -9,8 +9,14 @@ std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)> Window::mRenderer
 //Other static members
 SDL_Rect Window::mBox;
 
+//Random Number Generator
+std::mt19937 m_Random;
+
 void Window::Init(int width, int height, std::string title)
 {
+	// Intiate Random Number Generator	
+	m_Random.seed(time(0));
+
 	//initialize all SDL subsystems
 	if (SDL_Init(SDL_INIT_EVERYTHING) == -1)
 		throw std::runtime_error("SDL Init Failed");
@@ -45,8 +51,6 @@ void Window::Init(int width, int height, std::string title)
 
 	//-- For Sounds --
 	/* Mix_Chunk is like Mix_Music, only it's for ordinary sounds. */
-	
-
 
 	//Setup our window size
 	mBox.x = 0;
@@ -186,4 +190,10 @@ Vector2i Window::GetWindowSize()
 	SDL_GetWindowSize(mWindow.get(), &WindowSize.x, &WindowSize.y);
 	
 	return WindowSize;
+}
+
+int Window::Random(int Min, int Max)
+{
+	std::uniform_int_distribution<uint32_t> roll(Min, Max);
+	return roll(m_Random);
 }

@@ -9,6 +9,7 @@
 #include <sstream>
 #include <iostream>
 #include <memory>
+#include <random>
 #include <vmath.h>
 #include <time.h>
 #include "Common.h"
@@ -89,6 +90,8 @@ public:
 	static void DrawRect(const SDL_Rect *RectangleLocation, Color *RectColor);
 	//Return Window Size.
 	static Vector2i GetWindowSize(void);
+	//Random number generator
+	static int Random(int Min, int Max);
 
 private:
 	static std::unique_ptr<SDL_Window, void(*)(SDL_Window*)> mWindow;

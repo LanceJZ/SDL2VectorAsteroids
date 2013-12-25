@@ -5,7 +5,7 @@ int SmallRock::PlayerShotRock(void)
 	return 100;
 }
 
-SmallRock::SmallRock(boost::random::mt19937 &random, Mix_Chunk *ExplosionSound) : Rock(random, ExplosionSound)
+SmallRock::SmallRock(Mix_Chunk *ExplosionSound) : Rock(ExplosionSound)
 {
 	m_MaxVelocity = 90;
 	m_RockLow = 0;

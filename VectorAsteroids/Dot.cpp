@@ -25,14 +25,14 @@ void Dot::Update(double *Frame)
 void Dot::Activate(Vector2i location, float Angle, int size)
 {
 	m_Active = true;
-	m_Location = location + Vector2i(Random(0, size), Random(0, size));
+	m_Location = location + Vector2i(Window::Random(0, size), Window::Random(0, size));
 
 	float sinRot = sin(Angle);
 	float cosRot = cos(Angle);
 
 	int maxV = 50;
-	m_Velocity = Vector2f(cosRot * (float)Random(10, maxV), sinRot * (float)Random(10, maxV));
-	m_Timer = pTimer->Seconds() + (float)Random(m_TimerAmount / 2, m_TimerAmount) * 0.01;
+	m_Velocity = Vector2f(cosRot * (float)Window::Random(10, maxV), sinRot * (float)Window::Random(10, maxV));
+	m_Timer = pTimer->Seconds() + (float)Window::Random(m_TimerAmount / 2, m_TimerAmount) * 0.01;
 
 	m_Color.Alpha = 255;
 }
@@ -52,7 +52,7 @@ void Dot::UnpauseTimer(void)
 	pTimer->Unpause();
 }
 
-Dot::Dot(boost::random::mt19937 &random) : Entity(random)
+Dot::Dot() : Entity()
 {
 	m_Active = false;
 	m_TimerAmount = 100;

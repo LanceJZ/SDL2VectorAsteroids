@@ -29,7 +29,7 @@ private:
 	void PassPlayerLocation(void);
 
 public:
-	UFOController(boost::random::mt19937 &gen);
+	UFOController(void);
 	~UFOController(void);
 
 	bool GetSmallShotActive(int Shot);

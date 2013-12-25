@@ -29,11 +29,11 @@ protected:
 	int m_RockVarienceLow;
 
 public:
-	Rock(boost::random::mt19937 &random, Mix_Chunk *ExplosionSound);
+	Rock(Mix_Chunk *ExplosionSound);
 	~Rock(void);
 
 	virtual int PlayerShotRock(void);
-	void Initialize(boost::random::mt19937 &random);
+	void Initialize(void);
 	void Update(double *frame);
 	void Draw(void);
 	void Activate(Vector2i location);

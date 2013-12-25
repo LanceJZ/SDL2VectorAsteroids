@@ -16,11 +16,11 @@ void LargeUFO::DoesUFOShot(void)
 	{
 		ResetShotTimer(0);
 
-		FireShot(float(Random(0, 600)) * 0.01f);
+		FireShot(float(Window::Random(0, 600)) * 0.01f);
 	}
 }
 
-LargeUFO::LargeUFO(boost::random::mt19937 &random, Mix_Chunk *Shotsound, Mix_Chunk *ExplosionSound) : UFO(random, Shotsound, ExplosionSound)
+LargeUFO::LargeUFO(Mix_Chunk *Shotsound, Mix_Chunk *ExplosionSound) : UFO(Shotsound, ExplosionSound)
 {
 	m_Width = 40;
 	m_Radius = 22;
@@ -33,5 +33,5 @@ LargeUFO::~LargeUFO(void)
 
 int LargeUFO::PlayerShotUFO(void)
 {
-	return 200;//m_PlayerReference.SetGotPoints(200);
+	return 200;
 }

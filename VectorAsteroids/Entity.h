@@ -19,7 +19,7 @@ protected:
 	void UpdateFrame(double *Frame);
 
 public:
-	Entity(boost::random::mt19937 &random);
+	Entity(void);
 	~Entity(void);
 
 	bool CirclesIntersect(Vector2i Target, float TargetRadius);

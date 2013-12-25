@@ -23,7 +23,7 @@ void Entity::SetActive(bool Active)
 	m_Active = Active;
 }
 
-Entity::Entity(boost::random::mt19937 &random) : Common(random)
+Entity::Entity(void) : Common()
 {
 	m_Active = false;
 

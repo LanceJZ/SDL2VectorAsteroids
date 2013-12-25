@@ -46,11 +46,11 @@ void PlayerShip::SetExplosion(Vector2i *Location)
 	}
 }
 
-void PlayerShip::InitializeLines(boost::random::mt19937 &generator)
+void PlayerShip::InitializeLines()
 {
 	for (int line = 0; line < 3; line++)
 	{
-		pExplosionLines[line] = new PlayerExplosionLine(generator);
+		pExplosionLines[line] = new PlayerExplosionLine();
 	}
 }
 

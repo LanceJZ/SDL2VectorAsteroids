@@ -6,7 +6,7 @@ class MediumRock :
 	public Rock
 {
 public:
-	MediumRock(boost::random::mt19937 &gen, Mix_Chunk *ExplosionSound);
+	MediumRock(Mix_Chunk *ExplosionSound);
 	~MediumRock(void);
 
 	int PlayerShotRock(void);

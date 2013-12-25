@@ -55,7 +55,7 @@ protected:
 	void ResetShotTimer(float TimerAmount);
 
 public:
-	UFO(boost::random::mt19937 &random, Mix_Chunk *Shotsound, Mix_Chunk *ExplosionSound);
+	UFO(Mix_Chunk *Shotsound, Mix_Chunk *ExplosionSound);
 	~UFO(void);
 
 	void virtual Update(double *frame);

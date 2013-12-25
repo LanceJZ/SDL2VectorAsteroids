@@ -29,7 +29,7 @@ public:
 	void UpdateExplosion(double *frame);
 	void DrawExplosion(void);
 	void SetExplosion(Vector2i *Location);
-	void InitializeLines(boost::random::mt19937 &generator);
+	void InitializeLines(void);
 };
 
 #endif

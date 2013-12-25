@@ -1,6 +1,6 @@
 #include "Explosion.h"
 
-void Explosion::Draw()
+void Explosion::Draw(void)
 {
 	if (m_Active)
 	{
@@ -51,13 +51,13 @@ void Explosion::UnpauseTimer(void)
 	}
 }
 
-Explosion::Explosion(boost::random::mt19937 &random)
+Explosion::Explosion(void)
 {
 	m_Active = false;
 
 	for (int dot = 0; dot < 12; dot++)
 	{
-		pDots[dot] = new Dot(random);
+		pDots[dot] = new Dot();
 	}
 }
 

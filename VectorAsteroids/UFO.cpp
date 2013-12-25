@@ -38,7 +38,7 @@ void UFO::Activate(int Y)
 
 	BuildUFO();
 
-	if (Random(0, 100) < 50)
+	if (Window::Random(0, 100) < 50)
 	{
 		m_FromLeft = true;
 		m_FromRight = false;
@@ -131,7 +131,7 @@ void UFO::GotDistroyed(void)
 	Deactivate();
 }
 
-UFO::UFO(boost::random::mt19937 &random, Mix_Chunk *ShotSound, Mix_Chunk *ExplosionSound) : Entity(random)
+UFO::UFO(Mix_Chunk *ShotSound, Mix_Chunk *ExplosionSound) : Entity()
 {
 	m_NumberOfShots = 2;
 
@@ -154,10 +154,10 @@ UFO::UFO(boost::random::mt19937 &random, Mix_Chunk *ShotSound, Mix_Chunk *Explos
 
 	for (int shot = 0; shot < m_NumberOfShots; shot++)
 	{
-		pShots[shot] = new UFOShot(random);
+		pShots[shot] = new UFOShot();
 	}
 
-	pExplosion = new Explosion(random);
+	pExplosion = new Explosion();
 	pTimer = new Timer();
 	pTimer->Start();
 }
@@ -185,7 +185,7 @@ void UFO::FireShot(float angle)
 
 void UFO::ResetShotTimer(float TimerAmount)
 {
-	m_TimerFireShot = m_TimerAmountFireShot + pTimer->Seconds() + Random(0, (int)(m_TimerAmountFireShot * 10) * 0.1);
+	m_TimerFireShot = m_TimerAmountFireShot + pTimer->Seconds() + Window::Random(0, (int)(m_TimerAmountFireShot * 10) * 0.1);
 }
 
 //Private methods. -----------------------------------
@@ -201,12 +201,12 @@ void UFO::ChangeVector(void)
 
 	if (m_FromLeft)
 	{
-		angle = 5 + (Random(0, 200) *0.01);
+		angle = 5 + (Window::Random(0, 200) *0.01);
 	}
 
 	if (m_FromRight)
 	{
-		angle = 2 + (Random(0, 200) *0.01);
+		angle = 2 + (Window::Random(0, 200) *0.01);
 	}
 
 	float sinRot = sin(angle);
@@ -215,7 +215,7 @@ void UFO::ChangeVector(void)
 	m_Velocity.x = cosRot * m_MaxVelocity;
 	m_Velocity.y = sinRot * m_MaxVelocity;
 
-	m_TimerChangeVector = m_TimerAmountChangeVector + pTimer->Seconds() + Random(0, (int)(m_TimerAmountChangeVector * 0.75));
+	m_TimerChangeVector = m_TimerAmountChangeVector + pTimer->Seconds() + Window::Random(0, (int)(m_TimerAmountChangeVector * 0.75));
 }
 
 void UFO::CheckForSide(void)
@@ -226,22 +226,6 @@ void UFO::CheckForSide(void)
 
 void UFO::BuildUFO(void)
 {
-	//m_HLTopLX = -(m_Width / 7);
-	//m_HLTopRX = (m_Width / 7);
-	//m_HLTopY = -(m_Width / 5);
-
-	//m_HLLowerTopLX = -(m_Width / 4);
-	//m_HLLowerTopRX = (m_Width / 4);
-	//m_HLLowerTopY = 0;
-
-	//m_HLUpperBottomLX = -(m_Width / 2);
-	//m_HLUpperBottomRX = m_Width / 2;
-	//m_HLUpperBottomY = m_Width / 6;
-
-	//m_HLBottomLX = -(m_Width / 3);
-	//m_HLBottomRX = (m_Width / 3);
-	//m_HLBottomY = (m_Width / 3);
-
 	UFOLines[0].LineStart.x = -(m_Width / 7);
 	UFOLines[0].LineStart.y = -(m_Width / 5);
 	UFOLines[0].LineEnd.x = (m_Width / 7);

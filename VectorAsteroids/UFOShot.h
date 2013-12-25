@@ -6,7 +6,7 @@ class UFOShot :
 	public Shot
 {
 public:
-	UFOShot(boost::random::mt19937 &random);
+	UFOShot(void);
 	~UFOShot(void);
 
 };

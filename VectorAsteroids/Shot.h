@@ -19,7 +19,7 @@ protected:
 	float m_Speed;
 
 public:
-	Shot(boost::random::mt19937 &random);
+	Shot(void);
 	~Shot(void);
 
 	void Update(double *frame);

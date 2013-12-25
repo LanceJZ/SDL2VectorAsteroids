@@ -6,7 +6,7 @@ class PlayerShot :
 	public Shot
 {
 public:
-	PlayerShot(boost::random::mt19937 &random);
+	PlayerShot(void);
 	~PlayerShot(void);
 };
 

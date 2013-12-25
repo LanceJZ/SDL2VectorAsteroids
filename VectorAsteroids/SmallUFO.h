@@ -18,7 +18,7 @@ protected:
 	void DoesPlayerShotUFO(void);
 
 public:
-	SmallUFO(boost::random::mt19937 &random, Mix_Chunk *Shotsound, Mix_Chunk *ExplosionSound);
+	SmallUFO(Mix_Chunk *Shotsound, Mix_Chunk *ExplosionSound);
 	~SmallUFO(void);
 
 	void Update(double *frame, Vector2i *playerLocation);

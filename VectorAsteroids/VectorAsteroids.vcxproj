@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Data\User\Documents\Visual Studio 2013\C++\;C:\Data\User\Documents\Visual Studio 2013\C++\vmath-0.10\include;C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\include;C:\Data\User\Documents\Visual Studio 2013\C++\SDL2-2.0.1\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Data\User\Documents\Visual Studio 2013\C++\vmath-0.10\include;C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\include;C:\Data\User\Documents\Visual Studio 2013\C++\SDL2-2.0.1\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\lib\x86;C:\Data\User\Documents\Visual Studio 2013\C++\SDL2-2.0.1\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -58,7 +58,7 @@
       <PreprocessorDefinitions>WIN32;;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>
       </SDLCheck>
-      <AdditionalIncludeDirectories>C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\include;C:\Data\User\Documents\Visual Studio 2013\C++\boost;..\..\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\include;..\..\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -86,7 +86,7 @@ copy "C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\lib\x86\SDL
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\include;C:\Data\User\Documents\Visual Studio 2013\C++\boost;..\..\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Data\User\Documents\Visual Studio 2013\C++\SDL2_mixer-2.0.0\include;..\..\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

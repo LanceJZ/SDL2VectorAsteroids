@@ -12,8 +12,8 @@ private:
 	Color m_Color;
 
 public:
-	PlayerExplosionLine(boost::random::mt19937 &generator);
-	~PlayerExplosionLine();
+	PlayerExplosionLine(void);
+	~PlayerExplosionLine(void);
 
 	void Update(double *frame);
 	void Draw(void);

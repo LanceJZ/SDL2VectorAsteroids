@@ -118,7 +118,7 @@ void UFOController::NewGame(void)
 void UFOController::ResetTimer(void)
 {
 	m_TimerSpawn = m_TimerSpawnAmount + m_WaveCounter + (float)pTimer->Seconds() + 
-		Random((int)(m_TimerSpawnAmount * 0.1), (int)(m_TimerSpawnAmount * 0.5));
+		Window::Random((int)(m_TimerSpawnAmount * 0.1), (int)(m_TimerSpawnAmount * 0.5));
 	pLargeUFO->TimerReset();
 	pSmallUFO->TimerReset();
 	m_UFOActive = false;
@@ -138,7 +138,7 @@ void UFOController::SetWave(int number)
 	m_WaveCounter = number;
 }
 
-UFOController::UFOController(boost::random::mt19937 &random) : Common(random)
+UFOController::UFOController() : Common()
 {
 	m_TimerSpawn = 0;
 	m_TimerSpawnAmount = 14.25;
@@ -153,8 +153,8 @@ UFOController::UFOController(boost::random::mt19937 &random) : Common(random)
 	Mix_Chunk *UFOExplosionSound = Mix_LoadWAV("UFOExplosion.wav");
 	Mix_VolumeChunk(UFOExplosionSound, MIX_MAX_VOLUME / 4);
 
-	pLargeUFO = new LargeUFO(random, UFOShotSound, UFOExplosionSound);
-	pSmallUFO = new SmallUFO(random, UFOShotSound, UFOExplosionSound);
+	pLargeUFO = new LargeUFO(UFOShotSound, UFOExplosionSound);
+	pSmallUFO = new SmallUFO(UFOShotSound, UFOExplosionSound);
 	pTimer = new Timer();
 	pTimer->Start();
 	NewGame();
@@ -207,7 +207,7 @@ void UFOController::DoesUFOSpawn(void)
 
 		// After each UFO is spawned the chance it is a small UFO increases.
 		// The first spawn it is 0% chance, it goes down after each one.
-		if (Random(0, 99) < spawnPercent * 100)
+		if (Window::Random(0, 99) < spawnPercent * 100)
 		{
 			SpawnLargeUFO();
 		}

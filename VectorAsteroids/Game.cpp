@@ -16,7 +16,7 @@ int Game::OnInit()
 
 	try
 	{
-		Window::Init(screenWidth, screenHeight, "Vector Asteroids in SDL2 Alpha 03.82");
+		Window::Init(screenWidth, screenHeight, "Vector Asteroids in SDL2 Alpha 03.83");
 	}
 	catch (const std::runtime_error &error)
 	{
@@ -49,12 +49,10 @@ int Game::OnExecute()
 	}
 	// Intiate Timer.
 	pTimer = new Timer();
-	// Intiate Random Number Generator
-	random = new boost::random::mt19937(Uint32(time(0)));
 	// Intiate game objects here -----------------------
-	pThePlayer = new Player(*random);
-	pRocks = new RockController(*random);	
-	pUFOs = new UFOController(*random);
+	pThePlayer = new Player();
+	pRocks = new RockController();	
+	pUFOs = new UFOController();
 	pCollision = new Collision(pThePlayer, pRocks, pUFOs);
 	//--------------------------------------------------
 	

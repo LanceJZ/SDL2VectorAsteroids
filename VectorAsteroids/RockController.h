@@ -10,8 +10,6 @@
 class RockController : Common
 {
 private:
-	boost::random::mt19937 &m_Random;
-
 	int m_NumberOfRocks;
 	
 	std::vector<LargeRock*> m_LargeRocks;
@@ -27,7 +25,7 @@ private:
 	Mix_Chunk *p_ExplosionSound = nullptr;
 
 public:
-	RockController(boost::random::mt19937 &random);
+	RockController(void);
 	~RockController(void);
 
 	void Update(double *Frame);

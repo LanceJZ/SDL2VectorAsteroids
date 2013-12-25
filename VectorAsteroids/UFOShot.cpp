@@ -1,6 +1,6 @@
 #include "UFOShot.h"
 
-UFOShot::UFOShot(boost::random::mt19937 &random) : Shot(random)
+UFOShot::UFOShot() : Shot()
 {
 	m_ShotTimeLimit = 1.5;
 }

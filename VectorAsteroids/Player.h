@@ -40,14 +40,14 @@ private:
 	void UpdateShip(void);
 	void UpdateShots(double *Frame);
 	void UpdateRotationThrust(void);
-	void InitializeShot(boost::random::mt19937 &generator);
+	void InitializeShot(void);
 	void DrawShots(void);
 	void DrawThrust(void);
 	void FireShot(void);
 	void SetExplosion(void);
 
 public:
-	Player(boost::random::mt19937 &generator);
+	Player(void);
 	~Player(void);
 
 	void Draw(void);

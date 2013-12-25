@@ -225,7 +225,7 @@ void Player::Spawn(void)
 }
 
 // Add the Random Generator referance to the rest of the classes.
-Player::Player(boost::random::mt19937 &generator) : Entity(generator)
+Player::Player(void) : Entity()
 {
 	m_Thrust = false;
 	m_Fire = false;
@@ -263,8 +263,8 @@ Player::Player(boost::random::mt19937 &generator) : Entity(generator)
 	p_Explosionsound = Mix_LoadWAV("PlayerExplosion.wav");
 	Mix_VolumeChunk(p_Explosionsound, MIX_MAX_VOLUME / 4);
 
-	InitializeShot(generator);
-	pShip->InitializeLines(generator);
+	InitializeShot();
+	pShip->InitializeLines();
 }
 
 Player::~Player(void)
@@ -321,11 +321,11 @@ void Player::DrawThrust(void)
 	}
 }
 
-void Player::InitializeShot(boost::random::mt19937 &generator)
+void Player::InitializeShot()
 {
 	for (int shot = 0; shot < m_NumberOfShots; shot++)
 	{
-		pShots[shot] = new PlayerShot(generator);
+		pShots[shot] = new PlayerShot();
 	}
 }
 
@@ -389,7 +389,7 @@ void Player::UpdateRotationThrust(void)
 void Player::SetExplosion(void)
 {
 	pShip->SetExplosion(&(Vector2i)m_Location);
-	m_ExplosionTimer = pTimer->Seconds() + m_ExplosiontTimerAmount + Random(0, (int)m_ExplosiontTimerAmount);
+	m_ExplosionTimer = pTimer->Seconds() + m_ExplosiontTimerAmount + Window::Random(0, (int)m_ExplosiontTimerAmount);
 }
 
 void Player::TimerPause(void)

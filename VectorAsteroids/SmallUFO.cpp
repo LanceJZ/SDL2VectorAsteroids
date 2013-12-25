@@ -16,7 +16,7 @@ void SmallUFO::SetPlayerLocation(Vector2i *locaiton)
 	m_PlayerLocation = *locaiton;
 }
 
-SmallUFO::SmallUFO(boost::random::mt19937 &Random, Mix_Chunk *Shotsound, Mix_Chunk *ExplosionSound) : UFO(Random, Shotsound, ExplosionSound)
+SmallUFO::SmallUFO(Mix_Chunk *Shotsound, Mix_Chunk *ExplosionSound) : UFO(Shotsound, ExplosionSound)
 {
 	m_Width = 20;
 	m_Radius = 10;
@@ -42,8 +42,8 @@ void SmallUFO::DoesUFOShot(void)
 
 		int shotChance = (m_Spawned * 10) / (m_Wave * 2);
 
-		if (Random(1, 100) > shotChance)
-			FireShot(float(Random(0, 600)) * 0.01f);
+		if (Window::Random(1, 100) > shotChance)
+			FireShot(float(Window::Random(0, 600)) * 0.01f);
 		else
 			AimAtPlayer();
 	
@@ -53,7 +53,7 @@ void SmallUFO::DoesUFOShot(void)
 
 int SmallUFO::PlayerShotUFO(void)
 {
-	return 1000;//m_PlayerReference.SetGotPoints(1000);
+	return 1000;
 }
 
 void SmallUFO::SetWaveNumber(int number)

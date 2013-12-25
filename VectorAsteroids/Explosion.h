@@ -9,7 +9,7 @@ private:
 	bool m_Active;
 
 public:
-	Explosion(boost::random::mt19937 &random);
+	Explosion(void);
 	~Explosion(void);
 
 	void Draw();

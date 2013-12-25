@@ -4,8 +4,6 @@
 #ifndef Game_H
 #define Game_H
 #include <thread>
-#include <random/mersenne_twister.hpp>
-#include <random/uniform_int_distribution.hpp>
 #include "Window.h"
 #include "Timer.h"
 #include "Player.h"
@@ -31,8 +29,6 @@ public:
 	Game();
 	~Game();
 	
-	//Random Number Generator
-	boost::random::mt19937 *random;	
 	// Game objects here ---------------------
 	Player *pThePlayer = nullptr;
 	RockController *pRocks = nullptr;

@@ -6,7 +6,7 @@ class LargeRock :
 	public Rock
 {
 public:
-	LargeRock(boost::random::mt19937 &random, Mix_Chunk *ExplosionSound);
+	LargeRock(Mix_Chunk *ExplosionSound);
 	~LargeRock(void);
 
 	int PlayerShotRock(void);

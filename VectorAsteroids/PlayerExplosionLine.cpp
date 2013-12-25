@@ -20,10 +20,11 @@ void PlayerExplosionLine::Initialize(Line *ExpLine, Vector2i *Location)
 	ShipLine.LineEnd -= *Location;
 	m_Location = *Location;
 	int max = 200;
-	m_Velocity = Vector2f((Random(-max, max) * 0.1) - (Random(-max, max) * 0.1), (Random(-max, max) * 0.1) - (Random(-max, max) * 0.1));
+	m_Velocity = Vector2f((Window::Random(-max, max) * 0.1) - (Window::Random(-max, max) * 0.1),
+		(Window::Random(-max, max) * 0.1) - (Window::Random(-max, max) * 0.1));
 }
 
-PlayerExplosionLine::PlayerExplosionLine(boost::random::mt19937 &generator) : Entity(generator)
+PlayerExplosionLine::PlayerExplosionLine() : Entity()
 {
 	m_Color.Red = 150;
 	m_Color.Green = 0;

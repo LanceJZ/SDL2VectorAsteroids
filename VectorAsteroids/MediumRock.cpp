@@ -5,7 +5,7 @@ int MediumRock::PlayerShotRock()
 	return 50;
 }
 
-MediumRock::MediumRock(boost::random::mt19937 &random, Mix_Chunk *ExplosionSound) : Rock(random, ExplosionSound)
+MediumRock::MediumRock(Mix_Chunk *ExplosionSound) : Rock(ExplosionSound)
 {
 	m_MaxVelocity = 60;
 	m_RockLow = 0;
