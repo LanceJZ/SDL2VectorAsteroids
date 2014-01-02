@@ -29,13 +29,6 @@ public:
 	Game();
 	~Game();
 	
-	// Game objects here ---------------------
-	Player *pThePlayer = nullptr;
-	RockController *pRocks = nullptr;
-	UFOController *pUFOs = nullptr;
-	Collision *pCollision = nullptr;
-	// ---------------------------------------
-
 	// Run game, called by main().
 	int OnExecute();
 
@@ -43,6 +36,12 @@ private:
 	
 	//Our Timer
 	Timer *pTimer;
+	// Game objects here ---------------------
+	Player *pThePlayer = nullptr;
+	RockController *pRocks = nullptr;
+	UFOController *pUFOs = nullptr;
+	Collision *pCollision = nullptr;
+	// ---------------------------------------
 
 	// Whether the application is running.
 	bool 			running;

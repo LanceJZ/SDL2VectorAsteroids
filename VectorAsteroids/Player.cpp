@@ -275,24 +275,16 @@ Player::~Player(void)
 
 void Player::FireShot(void)
 {
-	int activateshot = 0;
-	bool foundshot = false;
-
 	for (int shot = 0; shot < 4; shot++)
 	{
 		if (!pShots[shot]->GetActive())
 		{
 			Mix_PlayChannel(-1, p_Shotsound, 0);
-
-			activateshot = shot;
-			foundshot = true;
+			//If shot found that is not active, then activate that shot.
+			pShots[shot]->Activate(m_Location, m_Rotation);
 			break;
 		}
 	}
-
-	//If shot found that is not active, then activate that shot.
-	if (foundshot)
-		pShots[activateshot]->Activate(m_Location, m_Rotation);
 }
 
 void Player::UpdateShots(double *Frame)

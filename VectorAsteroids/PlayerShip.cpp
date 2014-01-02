@@ -78,10 +78,10 @@ void PlayerShip::Initialize(void)
 	PlayerLines[1].LineEnd = Vector2i(5, 0);
 	PlayerLines[2].LineEnd = Vector2i(-5, 3);
 
-	ThrustLines[0].LineStart = Vector2i(-6, -2);
+	ThrustLines[0].LineStart = Vector2i(-9, 0);
 	ThrustLines[1].LineStart = Vector2i(-9, 0);
 
-	ThrustLines[0].LineEnd = Vector2i(-9, 0);
+	ThrustLines[0].LineEnd = Vector2i(-6, -2);
 	ThrustLines[1].LineEnd = Vector2i(-6, 2);
 }
 
